@@ -1,0 +1,129 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Rajendra Kadam | Code Snippets</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="../static/css/main.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	</head>
+	<body>
+
+		<!-- Header -->
+			<section id="header">
+				<h1 id="logo"><a href="{{ url_for('index') }}">Rajendra Kadam</a></h1>
+				<nav id="nav">
+					<ul>
+						<li><a href="{{ url_for('codesnippets') }}">Code Snippets</a></li>
+						<li><a href="#one">Getting started </a></li>
+						<li><a href="#two">Main function</a></li>
+						<li><a href="#three">Traverse function </a></li>
+						<li><a href="#four">Insert function </a></li>
+						<li><a href="#five">Search function </a></li>
+						<li><a href="#six">Delete function </a></li>
+						<li><a href="{{ url_for('index') }}" >Return to Main Page </a></li>
+					</ul>
+				</nav>
+				<footer>
+					<ul class="icons">
+						<li><a href="https://www.facebook.com/rajendra.kadam.165" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+						<li><a href="https://github.com/raju249" class="icon fa-github"><span class="label">Github</span></a></li>
+					</ul>
+				</footer>
+			</section>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+				<div id="main">
+				<section id="one">
+					<div class="container">
+						<article>
+						<h2>Linked List in C.</h2>
+						<p>I have used Prof.David.J.Malan of Harvard University's distribution code to write this code.I will be explaining the part of code and the logic why we used this line of code below the code snippet.<strong>HAPPY CODING.</strong> At the end you will have a link to view the whole source code and keep it for you along with all the header files.</p><strong>PS: I have put the code in parts to make it easy for you to understand.It should be written in one file.</strong>
+						<p>Getting Started: </p>
+						<script src="https://gist.github.com/raju249/24d85a43912cd2b2e644.js"></script>
+						<p>So here we have bunch of includes at the top i.e the header files.You may be familiar with many of them like<strong> stdio.h,stdlib.h and unistd.h</strong> I have some additional header files like<strong> cs50.h</strong> which has functions like GetInt() which does the same work as <strong> scanf</strong> in our TurboC++.</p>
+						<p>Next is we have defined a struct to create a node for linked list.I have used <strong> typedef </strong>so that this would create a new datatype of type node and I would use it everywhere.So instead of struct node I would say it as node p; This is just creating a new datatype and I call it as node.</p>
+						<p>Next we have the head of the node and I named it as "first" which currently points to NULL as their is no list in memory.<strong>Note:first is a pointer variable which is a pointer to node.</strong>Then we have a couple of functions prototypes defined at the bottom of the code.They do the same work as their name suggests.</p>
+					</article>
+					</div>
+				</section>
+				<section id="two">
+					<div class="container">
+						<article>
+							<p>Main: </p>
+							<script src="https://gist.github.com/raju249/458d68e2c623ee6f3492.js"></script>
+							<p>Now we come to main function which takes no argument.The code should be self-explanatory of what it does.It has a Menu of what the user has to do with the list aka <strong> delete a member,insert a member,search a member,traverse the list that is just look through the list and quit the program i.e erase the whole list from the memory and exit the program.</strong> This is written inside the <strong> do-while loop</strong> and keeps executing until you type "0" to quit.</p><strong>The GetInt() function from cs50.h header file waits till the user enter a number."scanf" can also be used for the same.</strong><p>Remember the "first" variable of type node we defined in the first part.We used the same variable and since it is a pointer variable which stores the address of the node.We assign the value (address) stored in first to <strong>predptr </strong> which is again a pointer to node.Well this part of code runs when you enter "0" to quit because we need to free memory before exiting the program.You should always free the memory if you use <strong>malloc </strong>to get some memory otherwise it may lead to memory leaks which makes your computer slow.</p><p>Next we check whether the list is empty if yes we straight away exit the program otherwise the body of the loop is executed.Try to understand the body of the while loop and see what it does. </p><strong>"free" is used to free the memory and erase the memory used by your program.</strong><p><strong>ptr = ptr->next</strong> says that go to variable called "next"  which is stored at the address stored in "ptr".Now we know that "next" is the part of the struct node and also stores address of the next node.<strong> free(predptr) </strong>frees the memory.</p>
+						</article>
+					</div>
+				</section>
+				<section id="three">
+					<div class="container">
+						<article>
+							<p>Traversing:</p>
+							<p>Now in this part and coming parts we will see all the implementation of functions for this list.First is "traverse" which traverses the list and prints the number in the list.</p>
+							<script src="https://gist.github.com/raju249/6929144331ee37019497.js"></script>
+							<p>We always start from the head of the list so we always use the variable named "first" to start with our work further.</p><p>Next we check whether the first is NULL.If it is NULL then it says that the list is empty.If it is not NULL then print the number or the data stored in each node and we update the variable "ptr" to point to next node.<strong> sleep(time in milliseconds) </strong>just pauses your program for the time specified in the prantheses.</p>
+						</article>
+					</div>
+				</section>
+				<section id="four">
+					<div class="container">
+						<article>
+							<p>Inserting:</p>
+							<p>Now we see the longest function of <strong>inserting</strong> a new element in linked list.</p>
+							<script src="https://gist.github.com/raju249/8d4fd0ac1ba3a59c4b54.js"></script><p>This is function is long because we also sort the list in ascending order.But it is good to implement sorting in the list as many people don't do it.It helps you understand how pointers work.</p>
+							<p>Before reading further I suggest you to read the code and understand it yourself</p>
+							<p>Now we enter the function and create a new node pointer which is called <strong>newptr </strong>which stores the address a new node created.Here we use <strong>malloc </strong>to get a piece of memory of size of node.Now sometimes if your computer is out of memory then malloc returns NULL.So in the next line it is a just a sanity check whether we have memory or not.If we don't have memory we just return and stop further execution.But if we have memory we proceed further.Next we get the number from the user and insert in the linked list.
+							</p><p>There are enough comments in the code to see what each line does.Because if I start explaining each and every line you'll keep scrolling down.But if you don't get what it does message me on WhatsApp or email me I would be happy to help.<strong>HAPPY CODING!</strong></p>
+						</article>
+					</div>
+				</section>
+				<section id="five">
+					<div class="container">
+						<article>
+							<P>Searching in List:</P>
+							<p>In this part we would be seeing how is search function implemented.</p>
+							<script src="https://gist.github.com/raju249/e982c977ef7029cfef7d.js"></script>
+							<p>Searching through list is the easiest part.You create a temporary pointer variable to search through the list and get updated if necessary to move to the next pointer.I get the number from the user and check the data or number stored at what ptr is pointing to.If I get that number I print it to the screen and come out of the loop or I update the pointer to point it to next node.That's it!!</p>
+						</article>
+					</div>
+				</section>
+				<section id="six">
+					<div class="container">
+						<article>
+							<p>Deleting data from list:</p>
+							<p>Last function that is delete a number or data from linked list.</p>
+							<script src="https://gist.github.com/raju249/35c675660f1ec51db064.js"></script>
+							<p>Now deleting invloves a little bit of imagination.I suggest you to take pen/pencil and paper and create a list consisting of boxes that stores data and pointer to next node.Now try to delete or remove the node that you want but make sure that you don't loose reference through the remaining list.Follow the code line by line in your example and delete the node.You will understand how it is done.</p>
+							<p><strong>You can also watch my youtube video on Linked list <a href="#">here</a></strong></p>
+							<h3>That's it and we are done.<strong>HAPPY CODING!!!</strong></h3>
+							<h4>Download the source code <a href="https://www.dropbox.com/sh/c8i0mzsrjx5il9v/AADAo3D0r22390aaNdy-TMb4a?dl=0">here.</a></h4>
+						</article>
+					</div>
+				</section>
+
+				</div>
+				<!-- Footer -->
+					<section id="footer">
+						<div class="container">
+							<ul class="copyright">
+								<li>&copy; rajendrakadam.me All rights reserved.</li>
+							</ul>
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../static/js/jquery.min.js"></script>
+			<script src="../static/js/jquery.scrollzer.min.js"></script>
+			<script src="../static/js/jquery.scrolly.min.js"></script>
+			<script src="../static/js/skel.min.js"></script>
+			<script src="../static/js/util.js"></script>
+			<!--[if lte IE 8]><script src="../static/js/ie/respond.min.js"></script><![endif]-->
+			<script src="../static/js/main.js"></script>
+
+	</body>
+</html>

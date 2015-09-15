@@ -1,1 +1,1 @@
-web: gunicorn rajendra.wsgi --log-file -
+web: python rajendra.py

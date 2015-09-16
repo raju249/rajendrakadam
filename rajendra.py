@@ -4,7 +4,7 @@ from flask import Flask,render_template,url_for,redirect
 #configuring app
 app = Flask(__name__)
 
-port = iint(os.environ.get("PORT",5000))
+port = int(os.environ.get("PORT",5000))
 #routing view function
 @app.route('/')
 @app.route('/index')
